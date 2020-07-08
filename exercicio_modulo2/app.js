@@ -15,7 +15,7 @@
 03 - Exiba a string 'Grandes poderes trazem grandes responsabilidades.' no console do browser.
 Utilize os espaços entre os comentários abaixo para executar os códigos dos exercícios. Inclusive este.
 */
-// console.log('Grandes poderes trazem grandes responsabilidades.')
+console.log('Grandes poderes trazem grandes responsabilidades.')
 
 
 /*
@@ -27,12 +27,12 @@ Utilize os espaços entre os comentários abaixo para executar os códigos dos e
 - Exiba a "myFavoriteTom" no console do browser.
 */
 
-// const tom = "Tom"
-// const firstTom = 'Hanks'
-// const secondTom = 'Cruise'
+const tom = "Tom"
+const firstTom = 'Hanks'
+const secondTom = 'Cruise'
 
-// const myFavoriteTom = `${tom} ${firstTom}`
-// console.log(myFavoriteTom)
+const myFavoriteTom = `${tom} ${firstTom}`
+console.log(myFavoriteTom)
 
 
 /*
@@ -44,7 +44,7 @@ Utilize os espaços entre os comentários abaixo para executar os códigos dos e
 */
 
 const programmingLanguage = 'JavaScript'
-const js = programmingLanguage.slice(0, 1) + programmingLanguage.slice(4, 5)
+const js = programmingLanguage[0] + programmingLanguage[4]
 console.log(js)
 
 /*
@@ -56,7 +56,7 @@ console.log(js)
 
 const mozilla = 'Mozilla Developer Network'
 
-const mdn = mozilla.slice(0, 1) + mozilla.slice(8, 9) + mozilla.slice(18, 19)
+const mdn = mozilla[0] + mozilla[8] + mozilla[18]
 console.log(mdn)
 
 /*
@@ -78,7 +78,7 @@ qualquer palavra que a "randomWord" receber;
 
 let randomWord = 'Araponga'
 const lastWord = randomWord.length
-console.log(randomWord.lastIndexOf(lastWord))
+console.log(randomWord[lastWord - 1])
 
 /*
 09 - Comente o console.log acima, e,
@@ -107,7 +107,7 @@ console.log(maiuscula)
 - Exiba, no console, o index do caractere "v" da "winterMessage";
 */
 
-const showWord = winterMessage.slice(4, 5)
+const showWord = winterMessage.indexOf('v')
 console.log(showWord)
 
 
@@ -126,7 +126,7 @@ console.log(indexShow)
 */
 
 const harryPotterAuthor = 'J.K. Rowling'
-console.log(`${harryPotterAuthor.slice(0, 2)}${harryPotterAuthor.slice(2, 4)}`)
+console.log(harryPotterAuthor.slice(0, 4))
 
 /*
 14 - Comente o console.log acima, e,
@@ -137,7 +137,7 @@ console.log(`${harryPotterAuthor.slice(0, 2)}${harryPotterAuthor.slice(2, 4)}`)
 
 const bestMovie = 'E o Oscar de melhor filme vai para: "La la land"!'
 
-const realBestMovie = bestMovie.replace('E o Oscar de melhor filme vai para: "La la land"!', 'Moonlight')
+const realBestMovie = bestMovie.replace('"La la land"!', 'Moonlight')
 console.log(realBestMovie)
 
 /*
@@ -199,8 +199,8 @@ console.log(`O nº de episódios é: ${episodes}`)
 - Não use template strings.
 */
 
-// const bookMessage = ''O Conto da Aia' é um dos livros mais vendidos da década.'
-// console.log(bookMessage)
+const bookMessage = '\'O Conto da Aia\' é um dos livros mais vendidos da década.'
+console.log(bookMessage)
 
 /*
 21 - Comente o console.log acima (e a const bookMessage caso não tenha descoberto a resolução), e,
@@ -228,3 +228,4 @@ console.log(newName)
 
 newName = `${name.replaceAll('w', 'W')}`
 console.log(newName)
+
