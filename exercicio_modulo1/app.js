@@ -88,3 +88,10 @@ veja o que acontece.
 document.querySelector('#birthYear').value = SEU_ANO_DE_NASCIMENTO
 document.querySelector('.formButton').click()
 */
+
+// function getEmail(nome) {
+//     const email = 'nome@gmail.com'
+//     const reply = email.replace('nome', `${nome}`)
+//     console.log(reply)
+// }
+// getEmail("paloma")
