@@ -20,8 +20,7 @@ let brazilianFoods = []
 */
 
 
-brazilianFoods.push('Coxinha', 'null', 'Brigadeiro',)
-
+brazilianFoods.push('Coxinha', null, 'Brigadeiro',)
 console.log(brazilianFoods)
 
 
@@ -50,9 +49,8 @@ mas sem digitar os nomes das comidas diretamente;
 */
 
 
-const foodsInfo = `"foodsInfo" a seguinte string: "Até aqui, o  
-array "brazilianFoods" possui ${brazilianFoods.length} itens: ${brazilianFoods[0]},  
-${brazilianFoods[1]} e ${brazilianFoods[2]}"`
+const foodsInfo = `Até aqui, o array "brazilianFoods" possui ${brazilianFoods.length} itens: ${brazilianFoods[0]},  
+${brazilianFoods[1]} e ${brazilianFoods[2]}`
 
 console.log(foodsInfo)
 
@@ -95,7 +93,7 @@ utilizando o método adequado para isso;
 agora é "Lilica".
 */
 
-console.log(dogNames.pop())
+console.log(dogNames[dogNames.length - 1])
 
 
 
@@ -112,8 +110,7 @@ apenas as letras iniciais dos nomes do array "dogNames";
 
 
 dogNames.push('Nina')
-
-const initials = `${dogNames[0].slice(0, 1)} ${dogNames[1].slice(0, 1)} ${dogNames[2].slice(0, 1)}`
+const initials = `${dogNames[0].slice(0, 1)} ${dogNames[1].slice(0, 1)} ${dogNames[2].slice(0, 1)} ${dogNames[3].slice(0, 1)}`
 console.log(initials)
 
 
@@ -138,8 +135,8 @@ digitada diretamente;
 constante que você criou.
 'A SOBREMESA é um doce à base de coco, tradicional na América Latina e em Angola.'
 */
-
-const dessert = `${dogNames[0].slice(3,5)}${dogNames[1].slice(2,4)}${dogNames[2].slice(2,4).replace('n', 'd')}`
+console.log(dogNames)
+const dessert = `${dogNames[0].slice(3,5)}${dogNames[1].slice(2)}${dogNames[3].slice(2).replace('n', 'd')}`
 console.log(`A ${dessert} é um doce à base de coco, tradicional na América Latina e em Angola.`)
 
 /*
