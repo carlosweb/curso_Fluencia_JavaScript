@@ -6,12 +6,23 @@
   - Exiba o resultado no console, sem inserir um console.log() dentro da função.
 */
 
+// function getTwoNumbers(num1 = 1, num2 = 5) {
+//   return num1 * num2
+// }
+// const result = getTwoNumbers(10, 6)
+// console.log(result)
+
 /*
   02
   - Faça o mesmo que o exercício acima pede, mas desta vez, implemente uma  
     **function expression** que retorne o resultado da **divisão** entre esses  
     2 números.
 */
+// const getDivisionNumbers = function (num1 = 1, num2 = 0) {
+//   return num1 / num2
+// }
+// const newResult = getDivisionNumbers(25, 5)
+// console.log(newResult)
 
 /*
   03
@@ -24,6 +35,13 @@
   "Esta é a Xª vez que essa string é exibida."
 */
 
+// const repeatText = function (x = 'voce deve passar um argumento') {
+//   for(let i = 0; i <= x; i++) {
+//     // console.log(`Esta é a ${i} vez que essa string é exibida.`)
+//   }
+// }
+// repeatText(7)
+
 /*
   04
   - Comente o código acima, de forma que a string não seja mais exibida no  
@@ -34,7 +52,17 @@
     função.
 */
 
-const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+// const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influencer', 'crush', 'fitness', 'hater', 'bae', 'random', 'kawaii', 'outfit', 'mood', 'fail']
+
+// const newArrayWord = []
+// const getWord = function(){
+//   for(let i =0;i < millennialWords.length;i++){
+//     const wordInUpperCase = millennialWords[i].toUpperCase()
+//      newArrayWord.push(wordInUpperCase)
+//   }
+//   return newArrayWord
+// }
+// console.log(getWord().join(', '))
 
 /*
   05
@@ -45,7 +73,26 @@ const millennialWords = ['lol', 'yolo', 'troll', 'stalkear', 'selfie', 'influenc
   "O array "randomNumbers" possui XX números, sendo XX positivos e XX negativos."
 */
 
-const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
+// const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
+// const isPositive = []
+// const isNegativeNumber = []
+
+// const isPositiveNumber = function() {
+//   for(let i=0;i < randomNumbers.length;i++) {
+//     const item = randomNumbers[i]
+//     if(randomNumbers[i] >= 1){
+//       isPositive.push(item)
+//     }else{
+//       isNegativeNumber.push(item)
+//     }
+//   }
+//   return randomNumbers
+// }
+// isPositiveNumber()
+// const teste = isPositive
+// const negative = isNegativeNumber
+// console.log(`O array "randomNumbers" possui ${randomNumbers.length} números, sendo ${teste.length} positivos e ${isNegativeNumber.length} negativos.`)
+
 
 /*
   06
@@ -56,7 +103,22 @@ const randomNumbers = [-2, 93, 34, -1, 1, 93, 11, -7, 47, -3]
     função.
 */
 
-// getOddNumbers([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+const getOddNumbers = ([83, 52, 31, 73, 98, 37, 61, 56, 12, 24, 35, 3, 34, 80, 42])
+const arrayImpares = []
+
+const getImpares = function() {
+  for(let i=0;i < getOddNumbers.length;i++){
+    let numberImpar = getOddNumbers[i] % 2 === 1
+    if(numberImpar){
+      arrayImpares.push(getOddNumbers[i])
+      // console.log(arrayImpares)
+    }
+  }
+  return arrayImpares
+}
+const teste2 = getImpares()
+console.log(teste2)
+
 
 /*
   07
@@ -93,3 +155,11 @@ const functions = [
   function () { return 'Índias' },
   function () { return 'Ocidentais.' }
 ]
+
+// function phrases(){
+//   for(let i=0; i < functions.length; i++){
+//     console.log(functions[i])
+//   }
+// }
+
+// phrases(0)
