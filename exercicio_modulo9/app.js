@@ -37,7 +37,7 @@
     "CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO"
   */
 
-//   const converteMinuscula = converte => String(converte).toLowerCase()
+//   const converteMinuscula = converte => converte.toLowerCase()
 //   const result = converteMinuscula("CHOCOTONE E OVO DE PÁSCOA JUNTOS NO MERCADO EM PLENO FEVEREIRO")
 //   console.log(result)
 
@@ -48,7 +48,7 @@
     - Ao ser invocada, a função deve retornar o index do caractere na string.
   */
 
-//   const retornaCaracter = (x, word) => String(word).indexOf(x)
+//   const retornaCaracter = (x, word) => word.indexOf(x)
   
 //   const result = retornaCaracter("E", "carlos Eduardo")
 //   console.log(result)
@@ -59,38 +59,43 @@
       passado por argumento existe no array (também passado por argumento).
   */
 
-  const retornaBoolean = (item, teste=[]) => {
-     for(let i=0;i < teste.length;i++){
-         if(teste[i] === item){
-             console.log('Tem esse ingrediente no array')
-             return true
-         }else{
-             console.log('Não tem esse ingrediente no array')
-         }
-     }
-     return teste
-  }
-
-  const result = retornaBoolean('tt', ['rice', 'beans', 'tomato'])
-  console.log(result)
+//   const retornaBoolean = (item, array) => array.includes(item)
+//   console.log(retornaBoolean('cebola', ['arroz', 'feijao', 'tomate']))
+    
   
   /*
     06
     - Crie uma função que retorna a concatenação de 2 arrays, passados como  
       argumentos em sua invocação;
   */
+
+//   const twoArray = (firstArray, SecondArray) => firstArray.concat(SecondArray)
+  
+//   const result = twoArray(['carlos','paloma','mari'], ['dona maria', 'seu paulo'])
+//   console.log(result)
   
   /*
     07
     - Crie uma função que retorna o array passado como argumento em sua invocação,  
       mas com o último item removido.
   */
+
+//   const lastItem = (array) => {
+//     array.pop()
+//     return array 
+//   }
+ 
+//   const result = lastItem(['1','2','3','4','5'])
+//   console.log(result) 
   
   /*
     08
     - Crie uma função que retorna se o valor passado como argumento em sua  
       invocação é null.
   */
+
+//   const argNull = value => value === null
+//   console.log(argNull(null))
   
   /*
     09
@@ -101,7 +106,15 @@
       argumento a função que exibe seu nome no console e veja se o nome realmente  
       foi exibido.
   */
-  
+//  const invokeCallback = callback => {
+//      callback()
+//  }
+
+// const getCallback = () => {
+//     console.log('Carlos Santos')
+// }
+
+// invokeCallback(getCallback)
   /*
     10
     - Crie uma função que invoca uma função de callback recebida por parâmetro.  
@@ -111,7 +124,20 @@
     - Faça com que a invocação da função descrita no 1º item deste exercício (10)  
       resulte no triplo de 33.
   */
-  
+
+//   const getNumber = callback => {
+//       const number = 5
+//       callback(number)
+//   }
+
+//   getNumber(number => {
+//     console.log(number * 3)
+//   })
+
+//   const result = getNumber()
+//   console.log(result)
+
+
   /*
     11
     - Utilizando um forEach, baseado no array "numbers", a cada iteração, exiba a  
@@ -121,6 +147,13 @@
   */
   
 //   const numbers = [1, 2, 3]
+
+//   numbers.forEach((item, index, array) => {
+//     const itemPosition = index + 1
+//     const itemsArray = array.join(', ')
+//       console.log(`O ${itemPosition}º item do array [${itemsArray}] é ${item}.`)
+//   })
+  
   
   /*
     12
@@ -131,10 +164,12 @@
   
 //   const letters = ['v', 'e', 'p']
 //   let lettersCopy = []
+
+//   letters.forEach((item) =>{
+//         lettersCopy.push(item)
+//   })
   
-//   for (let i = 0; i < letters.length; i++) {
-//     lettersCopy.push(letters[i])
-//   }
+//   console.log(lettersCopy)
   
   /*
     13
@@ -143,12 +178,7 @@
       array "review";
     - Ao gerar o template, verifique no browser se os parágrafos foram incluídos  
       dentro da section vazia do markup abaixo.
-    <article>
-      <header>
-        <h1>Sobre "Jurassic Park"</h1>
-      </header>
-      <section data-js="section"></section>
-    </article>
+    
   */
   
 //   const section = document.querySelector('[data-js="section"]')
@@ -161,13 +191,19 @@
 //   ]
   
 //   let paragraphs = ''
-  
+
+//   review.forEach(paragraph => {
+//       paragraphs +=  `<p>${paragraph}</p>`
+//   })
+
+
 //   section.innerHTML = paragraphs
   
   /*
     14
     - Implemente uma função que retorna uma string com a quantidade de pessoas que  
       curtiram um post, conforme descrito a seguir;
+      
     - A função deve receber por parâmetro um array com os nomes das pessoas que  
       curtiram o post/vídeo/foto;  
     - Se o array recebido estiver vazio, a mensagem que a função deve retornar é  
@@ -183,3 +219,22 @@
       pelo restante da quantidade de pessoas que curtiram o post (além das duas  
       pessoas já mencionadas no início da mensagem).
   */
+
+// const getLikes = (names=[]) => {
+//     const firstName = names[0]
+//     const secontName = names[1]
+//     switch(names.length) {
+//         case 0:
+//             return `Ninguém curtiu isso`
+//         case 1:
+//             return `${firstName} curtiu isso`
+//         case 2:
+//             return `${firstName} e ${secontName} curtiram isso`
+//         case 3:
+//             return `${firstName}, ${secontName} e ${names[2]} curtiram isso`
+//         default:
+//             return `${firstName}, ${secontName} e mais ${names.length - 2} pessoas curtiram isso` 
+//     }
+// }
+
+// console.log(getLikes(['Rafael', 'Carlos', 'Jose', 'Davi', 'jonas', 'leandro']))
