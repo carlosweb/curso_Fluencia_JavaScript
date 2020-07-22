@@ -4,6 +4,8 @@
   - Ela deve ter um escopo global.
 */
 
+const name = 'Carlos'
+
 /*
   02
   - Funções também são blocos de código;
@@ -15,8 +17,14 @@
   - Um erro com a mensagem "Uncaught ReferenceError: SUA_VARIÁVEL is not  
     defined" será exibido no console;
   - Você sabe por que isso aconteceu?
+  porque a age esta dentro do scopo da getname
 */
 
+// const getName = () => {
+//     let age = 35
+//     console.log(`${name} ${age}`)
+// }
+// getName(age)
 /*
   03
   - Crie um objeto "car" com as seguintes propriedades e métodos:
@@ -34,23 +42,47 @@
       "O NOME_DO_CARRO está disponível nas cores COR_01, COR_02 e COR_03".
 */
 
+let car = {
+    name: 'BMW X6',
+    brand: 'bmw',
+    colors: ['Azul', 'Branco', 'Preto'],
+    isRunning: false,
+    run () {
+      this.isRunning = true
+        return `O ${this.name} está em movimento`
+    },
+    stop () {
+        this.isRunning = false
+        return `O ${this.name} está parado`
+    },
+    getColorsMessage (){
+        return `O ${this.name} está disponível nas cores ${this.colors[0]}, ${this.colors[1]} e ${this.colors[2]}`
+    }
+}
+
+
+
 /*
   04
   - Faça o carro andar e exiba no console se ele realmente está em movimento.
 */
+console.log(car.run())
+console.log(car.isRunning === true)
 
 /*
   05
   - Faça o carro parar e exiba no console se ele realmente está parado.
 */
-
+console.log(car.stop())
+console.log(car.isRunning === false)
 /*
   06
   - Exiba, no console, a mensagem com as cores do carro.
 */
-
+console.log(car.getColorsMessage(console.log(car.isRunning)))
 /*
   07
   - Exiba, no console, a mensagem "O carro é um MARCA_DO_CARRO NOME_DO_CARRO";
   - Utilize a notação de colchetes para acessar as propriedades do carro.
 */
+console.log(`O carro é um ${car['brand']} ${car['name']}`)
