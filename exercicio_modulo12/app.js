@@ -25,6 +25,18 @@ const best2019Movies = [
     { title: 'Varda por Agnès', directedBy: 'Agnès Varda' },
     { title: 'A Vida Invisível', directedBy: 'Karim Aïnouz' }
   ]
+
+  let message = `Todos os filmes e diretores do array devem constar na lista.`
+
+  best2019Movies.forEach(movie => {
+     message += ` 
+     - ${movie.title}, dirigido por ${movie.directedBy}`
+  })
+
+  // console.log(message)
+
+
+  
   
   /*
     02
@@ -56,15 +68,25 @@ const best2019Movies = [
         gitHub: 'https://github.com/Roger-Melo'
       },
       country: 'Brasil'
+    },
+    showCourse () {
+     console.log(`Vídeos recentes de ${this.name}:`)
+     this.videos.recentVideos.forEach(video => {
+       console.log(video.title)
+     })
     }
   }
   
-  /*
+// youtubeUser.showCourse()
+ 
+/*
+  }
+  
     03
     - Exiba o valor do PI no console.
   */
   
-  
+  console.log(Math.PI)
   
   /*
     04
@@ -73,6 +95,8 @@ const best2019Movies = [
   */
   
   const firstNumber = 8.3
+  console.log(Math.ceil(firstNumber))
+
   
   /*
     05
@@ -81,6 +105,7 @@ const best2019Movies = [
   */
   
   const secondNumber = 3.5
+  console.log(Math.round(secondNumber))
   
   /*
     06
@@ -89,6 +114,7 @@ const best2019Movies = [
   */
   
   const thirdNumber = 8.9
+  console.log(Math.floor(thirdNumber))
   
   /*
     07
@@ -96,9 +122,14 @@ const best2019Movies = [
   */
   
   const fourthNumber = 5.5
+  console.log(Math.trunc(fourthNumber))
   
   /*
     08
     - A cada vez que o index.html for carregado, exiba no console um número  
       aleatório de 0 à 10, incluindo 0 e 10.
   */
+
+
+  const randowNumber = Math.random()
+  console.log(Math.round(randowNumber * 10) )
