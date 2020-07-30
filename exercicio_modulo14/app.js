@@ -18,15 +18,11 @@ titleH1.textContent = upper
 const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
 
 const listNumbers = document.querySelector('.numbers')
-for(let i = 0; i < numbers.length; i++) {
-    const li = document.createElement('li')
-    const listNUmber = numbers[i]
-    
-  
-    listNumbers.appendChild(li)
 
+// numbers.forEach(number => {
+//     listNumbers.innerHTML += `<li>${number}</li>`
+// })
 
-}
    
 /*
   03
@@ -34,6 +30,18 @@ for(let i = 0; i < numbers.length; i++) {
     - Se o número é par, ele deve ser exibido na cor "lightblue";
     - Se o número é ímpar, exiba-o na cor "pink".
 */
+numbers.forEach(number => {
+    listNumbers.innerHTML += `<li>${number}</li>`
+    const par = number % 2 === 0
+    const impar = number % 2 === 1
+    if(numbers.includes(par)){
+        listNumbers.innerHTML += `<li>${number.style.color = 'lightblue'}</li>`
+    }
+    if(numbers.includes(impar)) {
+        listNumbers.innerHTML += `<li>${number.style.color = 'pink'}</li>`
+    }
+})
+
 
 
 
@@ -43,7 +51,8 @@ for(let i = 0; i < numbers.length; i++) {
   P.s: a classe "body-background" já está declarada no style.css.
 */
 
-
+const bg = document.querySelector('body')
+bg.setAttribute('class', "body-background")
 
 /*
   05
@@ -52,6 +61,8 @@ for(let i = 0; i < numbers.length; i++) {
     do link do index.html.
 */
 
+const linkGit = document.querySelector('a')
+linkGit.setAttribute('href','https://github.com/roger-melo-treinamentos/curso-de-js-roger-melo ')
 
 
 /*
@@ -59,6 +70,7 @@ for(let i = 0; i < numbers.length; i++) {
   - Exiba o novo valor do atributo href do link no console.
 */
 
+console.log(linkGit.getAttribute('href'))
 
 
 /*
@@ -67,17 +79,19 @@ for(let i = 0; i < numbers.length; i++) {
     manipuladas via JS no h1.
 */
 
-
+console.log(titleH1.style)
 
 /*
   08
   - Remova a classe "body-background", do elemento body.
 */
 
-
+bg.setAttribute('class', '')
 
 /*
   09
   - Se o link da página possuir uma classe "link", remova-a;
   - Não utilize o método remove() para fazer isso.
 */
+
+linkGit.setAttribute('class', '')
