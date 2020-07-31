@@ -5,9 +5,7 @@
 */
 
 const titleH1 = document.querySelector('h1')
-const upper = titleH1.textContent.toLocaleUpperCase()
-titleH1.textContent = upper
-
+titleH1.textContent = titleH1.textContent.toLocaleUpperCase()
 
 /*
   02
@@ -18,10 +16,11 @@ titleH1.textContent = upper
 const numbers = [ 53, 24, 3, 8, 1, 6, 57, 80, 77, 98, 55 ]
 
 const listNumbers = document.querySelector('.numbers')
+const insertNumbers = number => {
+  listNumbers.innerHTML += `<li class="number">${number}</li>`
+}
 
-// numbers.forEach(number => {
-//     listNumbers.innerHTML += `<li>${number}</li>`
-// })
+numbers.forEach(insertNumbers)
 
    
 /*
@@ -30,19 +29,18 @@ const listNumbers = document.querySelector('.numbers')
     - Se o número é par, ele deve ser exibido na cor "lightblue";
     - Se o número é ímpar, exiba-o na cor "pink".
 */
-numbers.forEach(number => {
-    listNumbers.innerHTML += `<li>${number}</li>`
-    const par = number % 2 === 0
-    const impar = number % 2 === 1
-    if(numbers.includes(par)){
-        listNumbers.innerHTML += `<li>${number.style.color = 'lightblue'}</li>`
-    }
-    if(numbers.includes(impar)) {
-        listNumbers.innerHTML += `<li>${number.style.color = 'pink'}</li>`
-    }
-})
 
+const lis = document.querySelectorAll('.numbers')
+const changeLiColor = li => {
+  const isEven = Number(li.textContent) % 2 === 0
+  if(isEven) {
+    li.style.color = 'lightblue'
+    return
+  }
+  li.style.color = 'pink'
+}
 
+lis.forEach(changeLiColor)
 
 
 /*
@@ -94,4 +92,4 @@ bg.setAttribute('class', '')
   - Não utilize o método remove() para fazer isso.
 */
 
-linkGit.setAttribute('class', '')
+linkGit.classList.toggle('link')
