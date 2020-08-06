@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button{
+    display: block;
+    margin: 1.6rem auto;
+    background: #555555;
+    color: white;
+    border: 0;
+    cursor: pointer;
+    padding: 1.6rem 2rem;
+    outline: none;
+    transition: background-color 0.2s;
+    border-radius: 0.8rem;
+}
+
+button:hover{
+    background: #6b6b6b;
+}
+
+.popup-wrapper{
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+.popup {
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    background-color: aliceblue;
+    position: relative;
+}
+
+.popup a {
+    color: white;
+    cursor: pointer;
+    padding: 1.6rem 2rem;
+    text-decoration: none;
+    background: #ff0;
+}
+
+.popup-close{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
