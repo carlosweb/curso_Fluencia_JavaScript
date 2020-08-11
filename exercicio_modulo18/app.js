@@ -20,6 +20,39 @@
   Dica: pesquise pelo método "insertAdjacentElement", no MDN;
 */
 
+
+const input = document.querySelector('#username')
+const form = document.querySelector('form')
+
+const message = () => {
+    const text = document.createElement('p')
+    form.insertAdjacentElement('beforeend', text);
+}
+
+const validateUser = () => {
+    
+    if(validateUser){
+        text.setAttribute('class', 'username-help-feedback')
+        text.textContent = 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas'
+        message()
+        return
+    }
+
+    text.textContent = 'Username válido =)'
+        text.setAttribute('class', 'username-success-feedback')
+        message()
+}
+
+form.addEventListener('keyup', event => {
+    const regexUser = /^[a-zA-Z]{6,}$/
+    const user = input.value
+    const validUser = regexUser.test(user)
+    console.log(validUser)
+    validateUser()
+    message()
+})
+
+
 /*
   02
   - Valide o envio do form;
@@ -50,3 +83,4 @@
   Spoiler alert: este tipo de exercício será frequente em etapas mais avançadas  
   do curso, onde falaremos sobre TDD. Vá se aquecendo =D
 */
+
