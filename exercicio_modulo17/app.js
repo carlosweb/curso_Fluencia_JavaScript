@@ -5,25 +5,28 @@
   const inputText = document.querySelector('#input')
   const bt = document.querySelector('button')
   const form = document.querySelector('form')
-  const pattern3 = /[a-zA-Z]{7,10}/
+  // const pattern3 = /.{7,}/
+  const pattern3 = /[a-zA-Z0-9]{7,11}/
 
   form.addEventListener('submit', event => {
     event.preventDefault()
-    //   console.log(event.target.input.value)
-      if(inputText.value === pattern3){
+      // console.log(event.target.input.value)
+      if(pattern3.test(inputText.value)){
         console.log('O valor inserido no input é válido =)')
       }else{
           console.log('Valor inválido =(')
       }
+      inputText.value=""
+      inputText.focus()
   })
 
   
 
  
 
-//   const pharagraf = document.querySelector('p')
-//   const pattern = /^documentation$/
-//   console.log(pattern.test(pharagraf))
+  // const pharagraf = document.querySelector('p')
+  // const pattern = /documentation/
+  // console.log(pattern.test(pharagraf.textContent))
 
 /*
   02
@@ -44,7 +47,7 @@
   - A regex não deve conter (literalmente) os caracteres B99;
   - Teste se o match aconteceu e exiba o resultado no console.
 */
-// const pattern2 = /[A-Z0-9]/
+// const pattern2 = /[A-Z0-9]{3}/
 // const B99message = 'E o Terry Crews faz tudo, inclusive tocar a abertura de B99 na flauta'
 // console.log(pattern2.test(B99message))
 
@@ -54,8 +57,8 @@
     resultado do teste entre a regex e a string exibido no console seja true.
 */
 
-// const word = 'O que a NASA fotografou no dia do seu aniversário?'
-// const NASARegex = /[A-Z]{4}/
+// const word = 'NASA'
+// const NASARegex = /^[A-Z]{4}$/
 // const NASAResult = NASARegex.test(word)
 
 // console.log(NASAResult)
