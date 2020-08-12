@@ -23,33 +23,75 @@
 
 const input = document.querySelector('#username')
 const form = document.querySelector('form')
+const text = document.createElement('p')
+const textSubmit = document.createElement('p')
+textSubmit.setAttribute('data-feedback', 'submit-feedback')
+const regexUser = /^[a-zA-Z]{6,}$/
+const bt = document.querySelector('button')
 
-const message = () => {
-    const text = document.createElement('p')
-    form.insertAdjacentElement('beforeend', text);
+const insertParagraph = (paragraph, text, className, previousSibling) => {
+    paragraph.textContent = text
+    paragraph.setAttribute('class', className)
+    previousSibling.insertAdjacentElement('afterend', textSubmit)
 }
 
-const validateUser = () => {
-    
-    if(validateUser){
-        text.setAttribute('class', 'username-help-feedback')
-        text.textContent = 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas'
-        message()
+const invalidSubmit = {
+    paragraph: textSubmit,
+    text: 'Por favor, insira um username válido',
+    className: 'submit-help-feedback' ,
+    previousSibling: bt
+}
+
+const validSubmit = {
+    paragraph: textSubmit,
+    text: 'Dados enviados =)',
+    className: 'submit-success-feedback' ,
+    previousSibling: bt
+}
+
+
+const removeParagrah = () => {
+
+}
+
+input.addEventListener('input', event => {
+    const inputValue = event.target.value
+
+    const invalidUsernamenfo = {
+        paragraph: text,
+        text: 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas',
+        className: 'username-help-feedback' ,
+        previousSibling: inputValue
+    }
+
+    const validUsernamenfo = {
+        paragraph: text,
+        text: 'Username válido =)',
+        className: 'username-success-feedback' ,
+        previousSibling: inputValue
+    }
+
+    if(!regexUser.test(inputValue)){
+        insertParagraph(invalidUsernamenfo)
         return
     }
 
-    text.textContent = 'Username válido =)'
-        text.setAttribute('class', 'username-success-feedback')
-        message()
-}
+    
+    insertParagraph(validUsernamenfo)
+    
+    
+})
 
-form.addEventListener('keyup', event => {
-    const regexUser = /^[a-zA-Z]{6,}$/
-    const user = input.value
-    const validUser = regexUser.test(user)
-    console.log(validUser)
-    validateUser()
-    message()
+
+form.addEventListener('submit', event =>{
+    event.preventDefault()
+    const inputValue = input.value
+
+    if(!regexUser.test(inputValue)){
+        insertParagraph(invalidSubmit)
+        return
+    }
+    insertParagraph(validSubmit)
 })
 
 
@@ -63,6 +105,8 @@ form.addEventListener('keyup', event => {
   - Use as classes disponíveis no arquivo style.css para colorir o parágrafo;
   - Não insira o parágrafo manualmente no index.html.
 */
+
+
 
 /*
   03
