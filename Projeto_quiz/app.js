@@ -29,9 +29,15 @@ form.addEventListener('submit', event => {
     localStorage.setItem('score', score)
     localStorage.getItem(score)
     h2.innerHTML = `Sua pontuação total é : ${score} pontos`
+
+        let counter = 0
+        const timer = setInterval(() =>{
+            if(counter === score){
+                clearInterval(timer)
+            }
+
+            h2.innerHTML = `Sua pontuação total é : ${counter}% pontos`
+            counter++
+        }, 10)
 })
 
-
-setTimeout(() =>{
-
-}, 1000)
