@@ -49,41 +49,41 @@ const validSubmit = {
     previousSibling: bt
 }
 
+const invalidUsernamenfo = {
+    paragraph: text,
+    text: 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas',
+    className: 'username-help-feedback' ,
+    previousSibling: inputValue
+}
+
+const validUsernamenfo = {
+    paragraph: text,
+    text: 'Username válido =)',
+    className: 'username-success-feedback' ,
+    previousSibling: inputValue
+}
+
 
 const removeParagrah = () => {
-
+ const textSubmitExistis = document.querySelector('[data-feedba]')
+ if(textSubmitExistis){
+    text.remove()
+ }
 }
 
 input.addEventListener('input', event => {
     const inputValue = event.target.value
 
-    const invalidUsernamenfo = {
-        paragraph: text,
-        text: 'O valor deve conter no mínimo 6 caracteres, com apenas letras maiúsculas e/ou minúsculas',
-        className: 'username-help-feedback' ,
-        previousSibling: inputValue
-    }
-
-    const validUsernamenfo = {
-        paragraph: text,
-        text: 'Username válido =)',
-        className: 'username-success-feedback' ,
-        previousSibling: inputValue
-    }
+    
 
     if(!regexUser.test(inputValue)){
         insertParagraph(invalidUsernamenfo)
         return
     }
-
-    
     insertParagraph(validUsernamenfo)
-    
-    
 })
 
-
-form.addEventListener('submit', event =>{
+const showSubmitInfo = event =>{
     event.preventDefault()
     const inputValue = input.value
 
@@ -92,7 +92,9 @@ form.addEventListener('submit', event =>{
         return
     }
     insertParagraph(validSubmit)
-})
+}
+
+form.addEventListener('submit', showSubmitInfo)
 
 
 /*
