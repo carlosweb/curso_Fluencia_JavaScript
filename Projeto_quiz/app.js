@@ -1,43 +1,51 @@
 const form = document.querySelector('.quiz-form')
-const h2 = document.querySelector('h2')
+const scoreDiv = document.querySelector('.score')
+let score = 0
 
-const correctAnswers = ['B', 'B', 'B', 'B']
+const correctAnswers = ['D', 'A', 'C', 'B']
 
-// const showResult = () => {
-    
-// }
+const getUserAnswers = () => {
 
-form.addEventListener('submit', event => {
-    event.preventDefault()
+    let userAnswers = []
+    correctAnswers.forEach((_, index) => {
+        const userAnswer = form[`inputQuestion${index + 1}`].value
+        userAnswers.push(userAnswer)
+    })
+   
+    return userAnswers
+}
 
-    let score = 0
-    const userAnswers = [
-        form.inputQuestion1.value,
-        form.inputQuestion2.value,
-        form.inputQuestion3.value,
-        form.inputQuestion4.value
-    ]
-
+const calculateUserScore = userAnswers => {
     userAnswers.forEach((userAnswer, index) =>{
-        if(userAnswer === correctAnswers[index]){
+        const isUserAnswresCorrect = userAnswer === correctAnswers[index]
+        if(isUserAnswresCorrect){
             score += 25
         }
     })
+}
 
-    scrollTo(0, 0)
+const animateFinalScore = () => {
+    let counter = 0
+    const timer = setInterval(() =>{
+        if(counter === score){
+            clearInterval(timer)
+        }
+        
+        scoreDiv.querySelector('span').textContent = `${counter++}`
+        
+    }, 10)
+}
 
-    localStorage.setItem('score', score)
-    localStorage.getItem(score)
-    h2.innerHTML = `Sua pontuação total é : ${score} pontos`
-
-        let counter = 0
-        const timer = setInterval(() =>{
-            if(counter === score){
-                clearInterval(timer)
-            }
-
-            h2.innerHTML = `Sua pontuação total é : ${counter}% pontos`
-            counter++
-        }, 10)
+form.addEventListener('submit', event => {
+    event.preventDefault()
+    scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    })
+    scoreDiv.classList.remove('d-none')
+    const userAnswers = getUserAnswers()
+    calculateUserScore(userAnswers)
+    animateFinalScore()
 })
 
