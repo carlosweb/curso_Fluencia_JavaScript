@@ -6,12 +6,19 @@
 
 const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
 
+const imparNumbers = randomNumbers.filter(number => number % 2 === 1)
+
+console.log(imparNumbers)
 /*
   02
   - Exiba no console quantos números abaixo de 501 o array abaixo possui.
 */
 
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
+
+const numberFiveZeroOne = crazyNumbers.filter(number => number < 501 )
+
+console.log(numberFiveZeroOne.length)
 
 /*
   03
@@ -20,6 +27,9 @@ const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 */
 
 const numbers = [5, 7, 3]
+
+const doubleNumber = numbers.map(number => number ** 2)
+console.log(doubleNumber)
 
 /*
   04
@@ -39,8 +49,14 @@ const cart = [
   { name: 'Death Stranding', price: 149.99 }
 ]
 
+const nameGames = cart.filter(({ name }) => name === name)
+
+nameGames.forEach(item => {
+    console.log(' - ' + item.name, '\n')
+})
+
 /*
-  - Nome 1
+  - Nome 1 
   - Nome 2
   - Nome 3
 */
@@ -65,6 +81,9 @@ const tarantinoMovies = [
   { name: 'Kill Bill: Volume 1', release: 2003 }
 ]
 
+const moviesBefore2000 = tarantinoMovies.filter(({ release }) => release < 2000)
+console.log(moviesBefore2000)
+
 /*
   06
   - Gere um novo array que contém apenas os nomes das séries abaixo;
@@ -80,6 +99,11 @@ const tvShows = [
   { name: 'House M.D.', releaseYear: 2004 },
   { name: 'Watchmen', releaseYear: 2019 }
 ]
+
+const nameSeries = tvShows.filter(({ name }) => name)
+nameSeries.forEach(item => {
+    console.log(item.name)
+})
 
 /*
   07
