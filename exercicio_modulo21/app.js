@@ -5,20 +5,23 @@
 */
 
 const randomNumbers = [10, 30, 15, 25, 50, 40, 5]
-
 const imparNumbers = randomNumbers.filter(number => number % 2 === 1)
-
 console.log(imparNumbers)
 /*
   02
   - Exiba no console quantos números abaixo de 501 o array abaixo possui.
 */
 
+ const countNmber = (acc, crazyNumber) => {
+  if(crazyNumber < 501) {
+    acc += 1
+  }
+  return acc
+}
 const crazyNumbers = [937, 5, 395, 402, 501, 333, 502, 781, 3, 691]
 
-const numberFiveZeroOne = crazyNumbers.filter(number => number < 501 )
-
-console.log(numberFiveZeroOne.length)
+const numberFiveZeroOne = crazyNumbers.reduce(countNmber, 0)
+console.log(numberFiveZeroOne)
 
 /*
   03
@@ -27,7 +30,6 @@ console.log(numberFiveZeroOne.length)
 */
 
 const numbers = [5, 7, 3]
-
 const doubleNumber = numbers.map(number => number ** 2)
 console.log(doubleNumber)
 
@@ -49,11 +51,14 @@ const cart = [
   { name: 'Death Stranding', price: 149.99 }
 ]
 
-const nameGames = cart.filter(({ name }) => name === name)
+// const nameGames = cart.filter(({ name }) => name === name)
 
-nameGames.forEach(item => {
-    console.log(' - ' + item.name, '\n')
-})
+// nameGames.forEach(item => {
+//     console.log(' - ' + item.name)
+// })
+
+const productList = cart.reduce((acc, { name }) => `${acc}- ${name}\n`, '')
+console.log(productList)
 
 /*
   - Nome 1 
@@ -100,10 +105,8 @@ const tvShows = [
   { name: 'Watchmen', releaseYear: 2019 }
 ]
 
-const nameSeries = tvShows.filter(({ name }) => name)
-nameSeries.forEach(item => {
-    console.log(item.name)
-})
+const nameSeries = tvShows.map(({ name }) => name)
+console.log(nameSeries)
 
 /*
   07
