@@ -36,6 +36,10 @@ const animateFinalScore = () => {
     }, 10)
 }
 
+const resetUserScore = () => {
+    score = 0
+}
+
 form.addEventListener('submit', event => {
     event.preventDefault()
     scrollTo({
@@ -45,6 +49,8 @@ form.addEventListener('submit', event => {
     })
     scoreDiv.classList.remove('d-none')
     const userAnswers = getUserAnswers()
+
+    resetUserScore()
     calculateUserScore(userAnswers)
     animateFinalScore()
 })
