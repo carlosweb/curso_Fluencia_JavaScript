@@ -7,6 +7,9 @@
 
 const names = ['Caio', 'André', 'Dário']
 
+const sortNamesAsc = names.map(name => name) 
+console.log(sortNamesAsc.sort())
+
 /*
   02
   - Ordene, de forma crescente, os objetos do array abaixo baseado em seus id's;
@@ -21,6 +24,14 @@ const characters = [
   { id: 04, name: 'Mufasa' }
 ]
 
+const sortNumbers = characters
+  .map(({id, name}) => ({id, name}))
+
+sortNumbers.sort((item2, item1) => item2.id - item1.id)
+console.log(sortNumbers)
+
+
+
 /*
   03
   - Ordene o array de números abaixo de forma crescente;
@@ -30,12 +41,17 @@ const characters = [
 
 const numbers = [41, 15, 63, 349, 25, 22, 143, 64, 59, 291]
 
+const newNumberAsc = numbers.map(num => num)
+console.log(newNumberAsc.sort((num1, num2) => num1 - num2))
+
 /*
   04
   - Encontre e exiba no console o 1º item maior que 50 do array abaixo.
 */
 
 const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
+const firstNumberIsBig50 = randomNumbers.find(number => number > 50)
+console.log(firstNumberIsBig50)
 
 /*
   05
@@ -45,25 +61,31 @@ const randomNumbers = [10, 5, 0, 40, 60, 10, 20, 70]
 */
 
 const people = ['Cauã', 'Alfredo', 'Bruno']
+const orderNamesInvertid = people.map(name => name)
+console.log(orderNamesInvertid.sort().reverse())
 
 /*
   06
-  
   - Através do array abaixo, gere a mensagem "vinho cozido, tomate cozido, 
     cebola cozida, cogumelo cozido";
   - Exiba a string no console.
 */
 
 const ingredients = ['vinho', 'tomate', 'cebola', 'cogumelo']
+const ingredientsCozidos = ingredients.reduce((acc, produtc, index,array) => {
+  const correctWordGender = /a$/.test(produtc) ? 'cozida' : 'cozido'
+  const isLastItem = index === array.length - 1
+  return isLastItem ? acc += `${produtc} ${correctWordGender}` : acc += `${produtc} ${correctWordGender}, `
+}, ' ')
+console.log(ingredientsCozidos)
 
 /*
   07
-  
   - À partir do array abaixo, obtenha e exiba no console o total de pessoas que 
     assistiram apenas os filmes da Disney.
 */
 
-const topBrazilmovies = [
+const topBrazilMovies = [
   { title: 'Vingadores: Ultimato', peopleAmount: 19686119, distributedBy: 'Disney' },
   { title: 'Titanic', peopleAmount: 17050000, distributedBy: 'Paramount / 20th Century' },
   { title: 'O Rei Leão', peopleAmount: 16267649, distributedBy: 'Disney' },
@@ -75,6 +97,11 @@ const topBrazilmovies = [
   { title: 'Os Vingadores', peopleAmount: 10968065, distributedBy: 'Disney' },
   { title: 'Dona Flor e Seus Dois Maridos', peopleAmount: 10735524, distributedBy: 'Embrafilme' }
 ]
+
+const totalPersons = topBrazilMovies
+    .filter(user => user.distributedBy === 'Disney')
+    .reduce((acc, item) => acc + item.peopleAmount, 0)
+console.log(totalPersons)
 
 /*
   08
@@ -96,12 +123,23 @@ const pets = [
   { name: 'Chico', age: 6, gender: 'Male', type: 'Dog' }
 ]
 
+const newAgeDogs = pets
+  .filter(({ type }) => type === 'Dog')
+  .map(({ age })=> age * 7 )
+console.log(newAgeDogs)
+
 /*
   09
   
-  - Considerando o array topBrazilmovies, através do map ou do reduce, insira 
+  - Considerando o array topBrazilMovies, através do map ou do reduce, insira 
     os nomes dos filmes na ul do index.html.
 */
+const ul = document.querySelector('.list-group')
+const namesMovies = topBrazilMovies.reduce((acc, {title}) => 
+  acc + `<li>${title}</li>`, '')
+
+ul.innerHTML = namesMovies
+
 
 /*
   10
