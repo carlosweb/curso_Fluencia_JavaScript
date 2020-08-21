@@ -5,7 +5,7 @@
 */
 
 const message = 'Próxima etapa: 10'
-console.log(Array.from(message).includes(':')) 
+console.log(message.includes(':')) 
 
 /*
   02
