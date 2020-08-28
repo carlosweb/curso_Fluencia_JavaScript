@@ -107,21 +107,26 @@ let booksBox = {
   booksIn: 0
 }
 
-booksBox.addBooks = qtdBoooks => {
+
+ const getPluralOrSingular = (quantity, singular, plural) => 
+  quantity === 1? singular : plural
   
-  if(booksBox.booksIn === booksBox.spaces){
+booksBox.addBooks = qtdBoooks => {
+  let {booksIn, spaces} = booksBox
+
+  if(booksBox.booksIn === spaces){
     return `A caixa já está cheia`
   }
-  if(booksBox.booksIn + qtdBoooks > booksBox.spaces ) {
-    const avaliableSpaces = booksBox.spaces - booksBox.booksIn
-    const fitPluralOrSingular = avaliableSpaces === 1 ? 'cabe' : 'cabem'
-    const pluralOrSingular = avaliableSpaces === 1 ? 'livro' : 'livros'
+  if(booksIn + qtdBoooks > spaces ) {
+    const avaliableSpaces = spaces - booksIn
+    const fitPluralOrSingular = getPluralOrSingular(avaliableSpaces, 'cabe', 'cabem') 
+    const pluralOrSingular = getPluralOrSingular(avaliableSpaces, 'livro',  'livros') 
     
     return `Só ${fitPluralOrSingular} mais ${avaliableSpaces} ${pluralOrSingular}`
   }
 
   booksBox.booksIn += qtdBoooks
-  const bookPluralOrSingular = booksBox.booksIn === 1 ? 'livro' : 'livros'
+  const bookPluralOrSingular = getPluralOrSingular(booksBox.booksIn, 'livro', 'livros') 
   return `Já há ${booksBox.booksIn} ${bookPluralOrSingular} na caixa`
 }
 
