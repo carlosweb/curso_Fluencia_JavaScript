@@ -119,12 +119,13 @@ const getPuralOrSingular = (quantity, singular, plural) =>
 
 
 pessoa.returnName = () =>{
-    const genderPerson = getPuralOrSingular(pessoa.gender, 'a', 'o' ) 
-    const ageEqualsOne = getPuralOrSingular(pessoa.age,'ano', 'anos' ) 
-    const metersEqualsOne = getPuralOrSingular(pessoa.howMuchMetersYouWalk,'metro', 'metros')
-    const meterHeightPluralOrSingular = getPuralOrSingular(pessoa.howMuchMetersYouWalk,'metro', 'metros')
-    return `Oi. Eu sou ${genderPerson} ${pessoa.name} ${pessoa.secondName}, tenho ${pessoa.age} ${ageEqualsOne}, ${pessoa.heigth} ${meterHeightPluralOrSingular} de altura, 
-    peso ${pessoa.weight} quilos e, só hoje, eu já caminhei ${pessoa.howMuchMetersYouWalk} ${metersEqualsOne}.`
+  const {gender, age, howMuchMetersYouWalk, name, secondName, walkOnTheStreet, weight, heigth, youRunning} = pessoa
+    const genderPerson = getPuralOrSingular(gender, 'a', 'o' ) 
+    const ageEqualsOne = getPuralOrSingular(age,'ano', 'anos' ) 
+    const metersEqualsOne = getPuralOrSingular(howMuchMetersYouWalk,'metro', 'metros')
+    const meterHeightPluralOrSingular = getPuralOrSingular(howMuchMetersYouWalk,'metro', 'metros')
+    return `Oi. Eu sou ${genderPerson} ${name} ${secondName}, tenho ${age} ${ageEqualsOne}, ${heigth} ${meterHeightPluralOrSingular} de altura, 
+    peso ${weight} quilos e, só hoje, eu já caminhei ${howMuchMetersYouWalk} ${metersEqualsOne}.`
 }
 console.log(pessoa.returnName())
 
@@ -146,7 +147,7 @@ const falsyValues = [false, 0, '', null, undefined, NaN]
 const truthyValues = [true, '0', () => {},{},[], -1, 'false']
 
 falsyValues.forEach(falsyValue => {
-  console.log(valueTruthy(falsyValue))
+console.log(valueTruthy(falsyValue))
 })
 
 truthyValues.forEach(truthyValue => {
