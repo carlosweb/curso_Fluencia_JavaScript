@@ -30,7 +30,6 @@ const animateFinalScore = () => {
         if(counter === score){
             clearInterval(timer)
         }
-        
         scoreDiv.querySelector('span').textContent = `${counter++}`
         
     }, 10)
