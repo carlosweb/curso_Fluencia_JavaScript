@@ -6,17 +6,16 @@
   - Implemente uma segunda função que exibe, no console, seus dados de usuário 
     do GitHub.
 */
-const getUrl =  async () => {
-    const res = await fetch('https://api.github.com/users/carlosweb')
-    return await res.json()
-}
+// const getUrl =  async username => {
+//     const res = await fetch(`https://api.github.com/users/${username}`)
+//     return res.json()
+// }
 
-const getUserGit = async () => {
-    const user = await getUrl()
-    console.log(user)
-}
+// const getUserGit = async username => {
+//   console.log(await getUserGit(username))
+// }
+// getUserGit('carlosweb')
 
-getUserGit()
 
 /*
   02
@@ -26,7 +25,9 @@ getUserGit()
 */
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-const newArray = numbers.map(num => num % 2 === 0 )
+const getDivisibleByTwoOrThree = num => num % 2 === 0 || num % 3 === 0
+const newArray = numbers
+  .filter(getDivisibleByTwoOrThree)
 console.log(newArray)
 
 /*
@@ -42,10 +43,10 @@ console.log(newArray)
     - Rafaela => "PRaPfaPePla".
 */
 
-let myName = ['C', 'a', 'r', 'l', 'o', 's']
-
-const myNameP = myName.map(name => 'p' + name)
-console.log(myNameP.join(''))
+let myName = ['Car', 'los']
+const getNameinPlanguage = (acc, syllable) => `${acc}P${syllable}`
+const myNameP = myName.reduce(getNameinPlanguage, '')
+console.log(myNameP)
 
 /*
   04
@@ -61,11 +62,9 @@ console.log(myNameP.join(''))
 */
 
 const myFirstName = 'Carlos'
-
 const myLettersName = Array.from(myFirstName)
-
 myLettersName.forEach((letra, index) => {
-    console.log(`"${letra}" é a ${index} letra do meu nome.`)
+    console.log(`"${letra}" é a ${index + 1} letra do meu nome.`)
 })
 
 /*
@@ -100,15 +99,14 @@ console.log(Object.keys(newObj))
 */
 
 
-const valueArray = (array, value) => {
-  array.forEach(item => {
-      if(item === item){
-          return item
-      }
-  })
-}
+
+
 const scores = [100, 90, 85, 100, 60, 85, 100, 90, 55, 75, 60]
-console.log(valueArray(scores, 100))
+
+const getOccurrences = (array, value) =>
+  array.reduce((acc, item) => value === item ? acc + 1 : acc, 0)
+  console.log(getOccurrences(scores, 100))
+
 
 /*
   07
@@ -132,3 +130,19 @@ console.log(valueArray(scores, 100))
   Dica: lembre-se que o método filter inclui o item em questão no novo array 
   que está sendo gerado **apenas** se a função retorna um valor truthy.
 */
+
+const filter = (array, func) => {
+  let newArray = []
+
+  array.forEach((item, index) => {
+    if(func(item)){
+      newArray.push(item)
+    }
+  })
+  return newArray
+}
+
+console.log(filter([1, 2, 3], item => item))
+console.log(filter([0, 1, 2], item => item))
+console.log(filter([1, 2, 3], item => item < 2))
+console.log(filter([1, 2, 3, 5], (item, index) => item === index + 1))
