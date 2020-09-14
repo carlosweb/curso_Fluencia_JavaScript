@@ -21,21 +21,47 @@
 */
 
 const api_key = 'o2KcwsdwaKFK4DwmWXS3RnKKaeeOi5dL'
-const input = document.querySelector('#search').value
+const endpoint = GIFName => 
+`https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${GIFName}`
+
 const form = document.querySelector('form')
-const out = document.querySelector('.out')
-const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${input}`
+const out = document.querySelector('div')
 
-const getDataGifs = async () => {
-     const res = await fetch(endpoint)
-     return await res.json()
+
+
+const generateGIF = (downSizedGIFUrl, GIFData) => {
+    const img = document.createElement('img')
+    img.setAttribute('src', downSizedGIFUrl)
+    img.setAttribute('alt', GIFData.data[0].title)
+
+    return img
 }
 
-const getGifs = async () => {
-    const gifs = await getDataGifs()
-    console.log(gifs)
+const fetchGIF = async inputValue => {
+    try {
+        const getGifName = endpoint(inputValue)
+        const response = await fetch(getGifName)
+        if(!response.ok){
+            throw new Error('Não foi possivel obter os dados')
+        }
+    } catch (erro) {
+        alert(`Erro: ${erro.message}`)
+    }
+}
+
+const insertGIFIntoDOM = async inputValue => {
+        const GIFData = await fetchGIF(inputValue)
+        const downSizedGIFUrl = GIFData.data[0].images.downsized.url
+        const img = generateGIF(downSizedGIFUrl, GIFData)
+        
+        out.insertAdjacentElement('afterbegin', img)
+
+        form.reset()
+}
+
+form.addEventListener('submit', event => {
+    event.preventDefault()
+    const inputValue = event.target.search.value
     
-    // out.innerHTML = gifs.title
-}
-
-form.addEventListener('keypress', getGifs)
+    insertGIFIntoDOM(inputValue)
+})
