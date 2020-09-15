@@ -21,47 +21,49 @@
 */
 
 const api_key = 'o2KcwsdwaKFK4DwmWXS3RnKKaeeOi5dL'
-const endpoint = GIFName => 
-`https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${GIFName}`
+const endpoint = GIFName =>
+  `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&limit=1&q=${GIFName}`
 
 const form = document.querySelector('form')
 const out = document.querySelector('div')
 
-
-
 const generateGIF = (downSizedGIFUrl, GIFData) => {
-    const img = document.createElement('img')
-    img.setAttribute('src', downSizedGIFUrl)
-    img.setAttribute('alt', GIFData.data[0].title)
+  const img = document.createElement('img')
+  img.setAttribute('src', downSizedGIFUrl)
+  img.setAttribute('alt', GIFData.data[0].title)
 
-    return img
+  return img
 }
 
 const fetchGIF = async inputValue => {
-    try {
-        const getGifName = endpoint(inputValue)
-        const response = await fetch(getGifName)
-        if(!response.ok){
-            throw new Error('Não foi possivel obter os dados')
-        }
-    } catch (erro) {
-        alert(`Erro: ${erro.message}`)
+  try {
+    const getGifName = endpoint(inputValue)
+    const response = await fetch(getGifName)
+
+    if (!response.ok) {
+      throw new Error('Não foi possivel obter os dados')
     }
+    return response.json()
+  } catch (erro) {
+    alert(`Erro: ${erro.message}`)
+  }
 }
 
 const insertGIFIntoDOM = async inputValue => {
-        const GIFData = await fetchGIF(inputValue)
-        const downSizedGIFUrl = GIFData.data[0].images.downsized.url
-        const img = generateGIF(downSizedGIFUrl, GIFData)
-        
-        out.insertAdjacentElement('afterbegin', img)
-
-        form.reset()
+  const GIFData = await fetchGIF(inputValue)
+  if(GIFData){
+    const downSizedGIFUrl = GIFData.data[0].images.downsized.url
+    const img = generateGIF(downSizedGIFUrl, GIFData)
+  
+    out.insertAdjacentElement('afterbegin', img)
+  
+    form.reset()
+  }
 }
 
 form.addEventListener('submit', event => {
-    event.preventDefault()
-    const inputValue = event.target.search.value
-    
-    insertGIFIntoDOM(inputValue)
+  event.preventDefault()
+  const inputValue = event.target.search.value
+
+  insertGIFIntoDOM(inputValue)
 })
