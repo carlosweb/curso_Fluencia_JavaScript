@@ -11,10 +11,12 @@
     versão deve fazer o mesmo que a função anterior faz, mas de forma diferente.
 */
 
-function inverter(num) {
-    return num.split('').reverse().join('');
-}
+const  inverter = string => string
+.split('')
+.reverse()
+.join('');
 console.log(inverter('123'))
+console.log(inverter('abc'))
 
 
 /*
@@ -25,12 +27,8 @@ console.log(inverter('123'))
 
 const numbers = [5, 20, 7, 32, 47, 15, 83, 91, 27, 33]
 let foundNumber = false
+const foundNumber15 = numbers.includes(15)
 
-const foundNumberArray = numbers.map(number => {
-    if (number === 15) {
-        foundNumber = true
-    }
-})
 
 // numbers.forEach(number => {
 //   if (number === 15) {
@@ -38,7 +36,7 @@ const foundNumberArray = numbers.map(number => {
 //   }
 // })
 
-console.log(foundNumber)
+console.log(foundNumber15)
 
 /*
   03
