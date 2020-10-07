@@ -12,7 +12,7 @@ const numbers = [50, 100, 50]
 
 const sum = (x, y, z) => x + y + z
 
-console.log(sum(numbers))
+console.log(sum(...numbers))
 
 /*
   02
@@ -23,7 +23,7 @@ console.log(sum(numbers))
 */
 
 const myName = 'carlos'
-console.log( ... myName.replace('c', 'C'))
+console.log([myName[0].toLocaleUpperCase(), ...myName.slice(1)].join(''))
 
 /*
   03
@@ -37,11 +37,10 @@ const randomNumber = Math.round(Math.random() * 100)
 const obj = {
   a: 1,
   b: 2,
-  c: null,
-  d: null,
+  ...randomNumber > 50 ? { c: 3 } : { d: 4 }
 }
 
-randomNumber > 50 ? obj.c = 3 : obj.d = 4
+
 
 console.log(obj)
 
@@ -51,22 +50,22 @@ console.log(obj)
     criado permaneça intacto.
 */
 
-const h = w => {
-  w.d = 3
+const third = obj => {
+  return{
+    ...obj,
+    d: 3
+  }
 }
 
-const q = f => {
-  h(f)
-}
+const second = obj => third(obj)
 
-const i = b => {
-  q(b)
-}
+const first = obj => second(obj)
 
-const v = { k: 't' }
 
-i(v)
-console.log(v)
+const object = { k: 't' }
+const object2 = first(object)
+
+console.log(object, object2)
 
 /*
   05
