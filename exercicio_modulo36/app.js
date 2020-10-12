@@ -95,6 +95,12 @@ const timestamps = [
   }
 ]
 
+const values = timestamps.reduce((acc, { date, value }) => {
+  acc[date] = value
+  return acc
+}, {})
+console.log(values)
+
 /*
   06
   - Já implementamos os métodos some, map e filter, do zero;
@@ -119,12 +125,24 @@ const timestamps = [
 let accumulator = 0
 const oddNumbers = [51, 97, 65, 23]
 
-const methodForEach = (array, index , funcArray) => {
-    accumulator = array[0] + array[1] 
-    return accumulator
+const forEach = (array, func) => {
+  for (let index = 0; index < array.length; index++){
+    const item = array[index]
+    func(item, index, array)
+  }
 }
 
-console.log(methodForEach(oddNumbers))
+const logMessage = (item, index, array) => {
+  const message = 
+  `${item} é o ${index + 1}ª item do array [${array.join(', ')}] `
+}
+const sumArrayItems = item => {
+  accumulator += item
+}
+
+forEach(oddNumbers, logMessage)
+forEach(oddNumbers, sumArrayItems)
+console.log(accumulator)
 
 /*
   07
@@ -155,27 +173,17 @@ console.log(methodForEach(oddNumbers))
 */
 
 const carousel = document.querySelectorAll('[data-js="carousel__item"]')
-const slides = []
 let total = 0
 
 const previous = () => {
-    updateSlides()
+   
 }
 
 const next = () => {
-    updateSlides()
-    carousel.forEach((item, index) => {
-        item.classList.remove('carousel__item--visible')
-        item.classList.add('carousel__item--hidden')
-    })
+    
 }
 
-const updateSlides = () => {
-   for(let i = 0; i < carousel.length; i++ ){      
-       slides.push(carousel[i])
-       console.log(slides)
-   }
-}
+
 
 document.querySelector('[data-js="carousel__button--prev"]').addEventListener('click', previous)
 document.querySelector('[data-js="carousel__button--next"]').addEventListener('click', next)
