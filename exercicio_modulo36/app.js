@@ -51,7 +51,7 @@ console.log(obj)
 */
 
 const third = obj => {
-  return{
+  return {
     ...obj,
     d: 3
   }
@@ -126,15 +126,15 @@ let accumulator = 0
 const oddNumbers = [51, 97, 65, 23]
 
 const forEach = (array, func) => {
-  for (let index = 0; index < array.length; index++){
+  for (let index = 0; index < array.length; index++) {
     const item = array[index]
     func(item, index, array)
   }
 }
 
 const logMessage = (item, index, array) => {
-  const message = 
-  `${item} é o ${index + 1}ª item do array [${array.join(', ')}] `
+  const message =
+    `${item} é o ${index + 1}ª item do array [${array.join(', ')}] `
 }
 const sumArrayItems = item => {
   accumulator += item
@@ -172,17 +172,38 @@ console.log(accumulator)
       1º slide, o slide anterior deve ser exibido.
 */
 
-const carousel = document.querySelectorAll('[data-js="carousel__item"]')
-let total = 0
+const slides = document.querySelectorAll('[data-js="carousel__item"]')
+let slidesIndex = 0
+const previous = document.querySelector('[data-js="carousel__button--prev"]')
+const next = document.querySelector('[data-js="carousel__button--next"]')
 
-const previous = () => {
-   
-}
+previous.addEventListener('click', () => {
+    if (slidesIndex === 0) {
+      slidesIndex = slides.length - 1
+    } else {
+      slidesIndex--
+    }
 
-const next = () => {
-    
-}
+    slides.forEach(slide => {
+      slide.classList.remove('carousel__item--visible')
+    })
 
+    slides[slidesIndex].classList.add('carousel__item--visible')
+})
+
+next.addEventListener('click', () => {
+    if (slidesIndex === slides.length - 1) {
+      slidesIndex = 0
+    } else {
+      slidesIndex++
+    }
+
+    slides.forEach(slide => {
+      slide.classList.remove('carousel__item--visible')
+    })
+
+    slides[slidesIndex].classList.add('carousel__item--visible')
+})
 
 
 document.querySelector('[data-js="carousel__button--prev"]').addEventListener('click', previous)
