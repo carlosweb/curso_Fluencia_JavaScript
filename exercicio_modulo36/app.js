@@ -178,12 +178,8 @@ const previous = document.querySelector('[data-js="carousel__button--prev"]')
 const next = document.querySelector('[data-js="carousel__button--next"]')
 
 previous.addEventListener('click', () => {
-    if (slidesIndex === 0) {
-      slidesIndex = slides.length - 1
-    } else {
-      slidesIndex--
-    }
-
+  slidesIndex === 0 ? slidesIndex = slides.length - 1 : slidesIndex--
+   
     slides.forEach(slide => {
       slide.classList.remove('carousel__item--visible')
     })
@@ -192,11 +188,7 @@ previous.addEventListener('click', () => {
 })
 
 next.addEventListener('click', () => {
-    if (slidesIndex === slides.length - 1) {
-      slidesIndex = 0
-    } else {
-      slidesIndex++
-    }
+  slidesIndex === slides.length - 1 ? slidesIndex = 0 : slidesIndex++
 
     slides.forEach(slide => {
       slide.classList.remove('carousel__item--visible')
